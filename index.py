@@ -37,7 +37,7 @@ def question(q):
    msg3=msg2[i].text
    msg4=msg3.replace("。","。\n")
    msg+= msg4
-   msg+= "卜卦結果僅供參考\n"
+   
    url1 = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQYAah11varWLxPaoQNoeG2oaReLqfe_W0GMAq9kFbfl0sdhtxIimTymFvoF2JSw-PZDtt3xWx3eSV1/pub?gid=2034558057&single=true&output=csv'
    #r = requests.get(url1)
    df = pd.read_csv(url1)
