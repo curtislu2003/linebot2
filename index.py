@@ -50,8 +50,8 @@ def question(q):
 
 app = Flask(__name__)
 
-line_bot_api = LineBotApi('PFjJexLUqZyO4NjB2vNeMMK7tZhoIJurM0jlD/8BzVCFYQoLOcM0RQ8cbRxYXBwp0347a9EqL5EyDXn/zCdC6dA1cAitwOFtRu5ROOz/C8VwR1bwSuxPckGxDz6ijKhgc5F2X7sCvqNNYhMnt+lzFQdB04t89/1O/w1cDnyilFU=')
-handler1 = WebhookHandler('07e8fe603cc6a45936caf5ca294ffd1e')
+line_bot_api = LineBotApi('H7uoWOzi1LGuz4c+Lr7ELNZRXC3SNmqnjROVt25OrlloV14FhiPdkLUZjXR3B5VTW6i/diGN4XeMbI+2ZtC3JH/Pspa5jmbZFmJHm+0SqqFpMZ5Eckhq2wzn4ozLuZOFGkfRiDl7fBFQVgvclBE1+wdB04t89/1O/w1cDnyilFU=')
+handler1 = WebhookHandler('423b778a6f26f0a9a5bd79ba83ec5676')
 
 
 @app.route("/callback", methods=['POST'])
