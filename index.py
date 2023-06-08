@@ -13,7 +13,7 @@ from linebot.models import (
 import requests
 
 import random
-from bs4 import BeautifulSoup4
+from bs4 import BeautifulSoup
 import pandas as pd
 
 def question(q):
@@ -39,19 +39,19 @@ def question(q):
    msg+= msg4
    msg+= "卜卦結果僅供參考"
    url1 = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQYAah11varWLxPaoQNoeG2oaReLqfe_W0GMAq9kFbfl0sdhtxIimTymFvoF2JSw-PZDtt3xWx3eSV1/pub?gid=2034558057&single=true&output=csv'
-   r = requests.get(url1)
-   df = pd.read_csv(r)
+   #r = requests.get(url1)
+   df = pd.read_csv(url1)
    df1=df[df['卦象']== gua_num]
    df2=df1[df1['問事']== q_dict[q]]
    df3=df2['解釋'].values 
    msg+="[{}]".format(q_dict[q])+df3
    msg+='\n'
-   return msg
+   return msg[0]
 
 app = Flask(__name__)
 
-line_bot_api = LineBotApi('H7uoWOzi1LGuz4c+Lr7ELNZRXC3SNmqnjROVt25OrlloV14FhiPdkLUZjXR3B5VTW6i/diGN4XeMbI+2ZtC3JH/Pspa5jmbZFmJHm+0SqqFpMZ5Eckhq2wzn4ozLuZOFGkfRiDl7fBFQVgvclBE1+wdB04t89/1O/w1cDnyilFU=')
-handler1 = WebhookHandler('423b778a6f26f0a9a5bd79ba83ec5676 423b778a6f26f0a9a5bd79ba83ec5676')
+line_bot_api = LineBotApi('PFjJexLUqZyO4NjB2vNeMMK7tZhoIJurM0jlD/8BzVCFYQoLOcM0RQ8cbRxYXBwp0347a9EqL5EyDXn/zCdC6dA1cAitwOFtRu5ROOz/C8VwR1bwSuxPckGxDz6ijKhgc5F2X7sCvqNNYhMnt+lzFQdB04t89/1O/w1cDnyilFU=')
+handler1 = WebhookHandler('07e8fe603cc6a45936caf5ca294ffd1e')
 
 
 @app.route("/callback", methods=['POST'])
@@ -77,7 +77,7 @@ def callback():
 def handle_message(event):
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=question(event.message.text)))
+        TextSendMessage(text=question(int(event.message.text))))
 
 
 if __name__ == "__main__":
